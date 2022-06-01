@@ -69,6 +69,20 @@ open class CircleColorPickerView: UIView {
             colorBubbleView.bubbleRadius = bubbleRadius
         }
     }
+    
+    @IBInspectable
+    public var bubbleColor: UIColor? {
+        didSet {
+            colorBubbleView.bubbleColor = bubbleColor
+        }
+    }
+    
+    @IBInspectable
+    public var showConnector: Bool = true {
+        didSet {
+            colorBubbleView.showConnector = showConnector
+        }
+    }
 
     @IBInspectable
     public var color: CGColor {

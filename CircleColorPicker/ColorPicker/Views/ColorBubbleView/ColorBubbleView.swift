@@ -32,9 +32,23 @@ class ColorBubbleView: UIView {
         }
     }
     
+    var bubbleColor: UIColor? {
+        didSet {
+            bubbleBackgroundView.backgroundColor = bubbleColor
+            setNeedsLayout()
+        }
+    }
+    
     var rainbowRadius: CGFloat = 8.0 {
         didSet{
             bubblePosition.constant = rainbowRadius
+            setNeedsLayout()
+        }
+    }
+    
+    var showConnector: Bool = true {
+        didSet {
+            connectStringView.isHidden = !showConnector
             setNeedsLayout()
         }
     }
@@ -56,8 +70,10 @@ class ColorBubbleView: UIView {
         xibSetup()
     }
     
-    func setBubbleColor(color: UIColor){
-        bubbleBackgroundView.backgroundColor = color
+    func setBubbleColor(color: UIColor) {
+        if bubbleColor == nil {
+            bubbleBackgroundView.backgroundColor = color
+        }
         connectStringView.backgroundColor = color.withAlphaComponent(0.5)
     }
     
